@@ -14,12 +14,5 @@ class GestpayCommon(PaymentAcquirerCommon):
 
 @odoo.tests.tagged('post_install', '-at_install', '-standard', 'external')
 class GestpayTest(StripeCommon):
-
-    def test_10_gestpay_s2s(self):
-        self.assertEqual(1,1)
-
-    def test_20_gestpay_form_render(self):
-        self.assertEqual(1,1)
-
-    def test_30_gestpay_form_management(self):
-        self.assertEqual(1,1)
+    pass
+    

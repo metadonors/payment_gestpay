@@ -12,11 +12,6 @@ _logger = logging.getLogger('donodoo')
 class PaymentTransaction(models.Model):
     _inherit = 'payment.transaction'
 
-    error_code = fields.Char(string=_("Error code"))
-
-    def gestpay_compute_fees(self, amount, currency, country):
-        return 0
-    
     def _gestpay_get_client(self):
         return GestPAY(self.acquirer_id.gestpay_shoplogin, test=self.acquirer_id.environment == 'test')
 
@@ -37,7 +32,6 @@ class PaymentTransaction(models.Model):
 
         if data['TransactionResult'] == "OK":
             self.write({
-                    'state': 'done',
                     'acquirer_reference': data['BankTransactionID'],
                     'date': fields.Datetime.now(),
                 })

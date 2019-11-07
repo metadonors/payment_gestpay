@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2017 Metadonors Srl
-     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <odoo>
     <data>
         <template id="gestpay_form">
-            <form t-if="acquirer" t-att-action="tx_url" method="post" target="_self">    
-            </form>
-        </template>
-
-        <template id="payment_gestpay_redirect" name="Payment Plain">
-            <script type="text/javascript">
-                window.location.href = '<t t-esc="return_url"/>';
-            </script>
+            <div>
+                <input type="hidden" name="data_set" t-att-data-action-url="tx_url" data-remove-me=""/>
+                <input type="hidden" name='amount' t-att-value='amount'/>
+                <input type="hidden" name='buyer_name' t-att-value='buyer_name'/>
+                <input type="hidden" name='buyer_email' t-att-value='buyer_email'/>
+                <input type="hidden" name='transaction_id' t-att-value='transaction_id'/>
+            </div>
         </template>
 
         <template id="gestpay_s2s_form">
             <form method="post" t-att-action="'/payment/authorize/s2s/create' if not json else '/payment/authorize/s2s/create_json'">
+                <!-- TODO IMPLEMENT s2s FORM-->
             </form>
         </template>
     </data>

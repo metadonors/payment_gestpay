@@ -6,7 +6,7 @@
             <field name="image" type="base64" file="payment_gestpay/static/src/img/gestpay_logo.png"/>
             <field name="provider">gestpay</field>
             <field name="company_id" ref="base.main_company"/>
-            <field name="view_template_id" ref="gestpay_acquirer_button"/>
+            <field name="view_template_id" ref="gestpay_form"/>
             <field name="registration_view_template_id" ref="gestpay_s2s_form"/>
             <field name="environment">test</field>
             <field name="gestpay_shoplogin">dummy</field>
