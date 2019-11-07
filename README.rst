@@ -64,16 +64,16 @@ Images
 Contributors
 ------------
 
-* Firstname Lastname <email.address@example.org>
-* Second Person <second.person@example.org>
+* Fabrizio Arzeni <fabrizio.arzeni@metadonors.it>
+* Simone Rubino <simone.rubino@agilebg.com>
 
 Funders
 -------
 
 The development of this module has been financially supported by:
 
-* Company 1 name
-* Company 2 name
+* [Metadonors](https://www.metadonors.it)
+* [Agile Business Group](https://www.agilebg.com/page/homepage)
 
 Maintainer
 ----------

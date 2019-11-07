@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Metadonors Srl
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+<data>
+
+    <record model="ir.ui.view" id="payment_acquirer_form_view">
+        <field name="name">payment.acquirer.form</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.acquirer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//group[@name="acquirer"]' position='after'>
+                    <group attrs="{'invisible': [('provider', '!=', 'gestpay')]}">
+                        <field name="gestpay_shoplogin"/>
+                        <field name="gestpay_send_user_info"/>
+                    </group>
+                </xpath>
+        </field>
+    </record>
+
+
+
+      <template id="gestpay_acquirer_button">
+            <form t-if="acquirer" t-att-action="tx_url" method="post" target="_self">    
+            </form>
+        </template>
+
+        <template id="payment_gestpay_redirect" name="Payment Plain">
+            <script type="text/javascript">
+                window.location.href = '<t t-esc="return_url"/>';
+            </script>
+        </template>
+
+        <template id="gestpay_s2s_form">
+            <form method="post" t-att-action="'/payment/authorize/s2s/create' if not json else '/payment/authorize/s2s/create_json'">
+            </form>
+        </template>
+</data>
+</odoo>

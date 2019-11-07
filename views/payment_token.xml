@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Metadonors Srl
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="payment_token_form_view">
+            <field name="name">payment.token.gestpay.form</field>
+            <field name="model">payment.token</field>
+            <field name="inherit_id" ref="payment.payment_token_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button type="object" name="waiting" string="Validate" class="oe_highlight" />
+                    </header>
+                </xpath>
+                <xpath expr="//form" position="replace">
+                    <form string='Payment Tokens' create='false' editable='bottom'>
+                        <sheet>
+                            <div class="oe_button_box" name="button_box">
+                                <button class="oe_stat_button" name="%(payment.action_payment_tx_ids)d" type="action" icon="fa-money" string="Payments">
+                                </button>
+                            </div>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name" attrs="{'readonly': True}"/>
+                                </h1>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name='partner_id'/>
+                                    <field name='acquirer_id'/>
+                                    <field name='acquirer_ref' readonly="0"/>
+                                    <field name="active"/>
+                                </group>
+                                <group>
+                                    <field name="provider" invisible="0"></field>
+                                    <field name="gestpay_creditcard_type" attrs="{'invisible': [('provider','!=', 'gestpay')]}"></field>
+                                    <field name="gestpay_creditcard_number" attrs="{'invisible': [('provider','!=', 'gestpay')]}"></field>
+                                    <field name="gestpay_creditcard_exp_month" attrs="{'invisible': [('provider','!=', 'gestpay')], 'required': [('provider','!=', 'gestpay')]}"></field>
+                                    <field name="gestpay_creditcard_exp_year" attrs="{'invisible': [('provider','!=', 'gestpay')]}"></field>
+                                    <field name="gestpay_creditcard_ccv" attrs="{'invisible': [('provider','!=', 'gestpay')]}"></field>
+                                    <field name="keep_clear" attrs="{'invisible': [('provider','!=', 'gestpay')]}"></field>
+                                </group>
+                            </group>
+                        </sheet>
+
+                    </form>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

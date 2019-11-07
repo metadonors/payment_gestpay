@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Metadonors Srl
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <data>
+        <template id="gestpay_form">
+            <form t-if="acquirer" t-att-action="tx_url" method="post" target="_self">    
+            </form>
+        </template>
+
+        <template id="payment_gestpay_redirect" name="Payment Plain">
+            <script type="text/javascript">
+                window.location.href = '<t t-esc="return_url"/>';
+            </script>
+        </template>
+
+        <template id="gestpay_s2s_form">
+            <form method="post" t-att-action="'/payment/authorize/s2s/create' if not json else '/payment/authorize/s2s/create_json'">
+            </form>
+        </template>
+    </data>
+</odoo>
