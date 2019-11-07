@@ -11,13 +11,22 @@ Payment Acquirer: Gestpay Implementation
 
 To install this module, you need to:
 
-_TODO_
+* Go to Invoicing -> Configuration -> Payment Acquirers
+* Install Gestpay Acquirer
+* Activate Gestpay Acquirer
 
 ## Configuration
 
 To configure this module, you need to:
 
-_TODO_
+* Go to Invoicing -> Configuration -> Payment Acquirers
+* Select Gestpay Acquirer
+* Set your Gestpay Shop Id
+
+On Gestpay backend you should set the url where users will be redirected after payments (see (Axerve docs)[https://docs.gestpay.it/soap/pay/using-banca-sella-payment-page/])
+
+* Go to Configuration -> Environment -> Response Addresses
+* Se both positive and negative URL as <your_odoo_url>/payment/gestpay/regiter
 
 .. figure:: path/to/local/image.png
    :alt: alternative description
@@ -27,7 +36,8 @@ _TODO_
 
 To use this module, you need to:
 
-_TODO_
+* Buy something in your Shop
+* Select Gestpay as payment gateway
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
@@ -38,7 +48,10 @@ _TODO_
 
 ## Known issues / Roadmap
 
-* ...
+* Improve error and exceptions handle in external payment page process
+* Implement S2S form payment
+* Support card tokenization (remember me feature)
+
 
 ## Bug Tracker
 
