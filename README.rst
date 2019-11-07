@@ -51,6 +51,7 @@ To use this module, you need to:
 * Improve error and exceptions handle in external payment page process
 * Implement S2S form payment
 * Support card tokenization (remember me feature)
+* Add some tests
 
 
 ## Bug Tracker
