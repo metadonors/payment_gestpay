@@ -10,7 +10,6 @@ from pygestpay import GestPAY
 
 _logger = logging.getLogger(__name__)
 
-
 class GestpayController(http.Controller):
 
     # TOFIX: no csrf, public route...something bad could happen
@@ -20,7 +19,6 @@ class GestpayController(http.Controller):
 
         # TODO: manage errors and exceptions
 
-        # TO FIX: maybe there is a better way to retrieve gestpay acquirer?
         acquirer = request.env.ref('payment_gestpay.payment_acquirer_gestpay')
         gestpay = GestPAY(acquirer.gestpay_shoplogin, test=acquirer.environment == 'test')
         url = gestpay.get_payment_page_url(**kwargs)
@@ -34,7 +32,6 @@ class GestpayController(http.Controller):
 
         # TODO: manage errors and exceptions
 
-        # TO FIX: maybe there is a better way to retrieve gestpay acquirer?
         acquirer_id = request.env.ref('payment_gestpay.payment_acquirer_gestpay')
         gestpay = GestPAY(acquirer_id.gestpay_shoplogin, test=acquirer_id.environment == 'test')
         data = gestpay.decrypt(kwargs.get('b'))
@@ -45,7 +42,32 @@ class GestpayController(http.Controller):
 
         transaction_id._gestpay_s2s_validate_data(data)
 
-        _logger.error(data)
-
-
         return werkzeug.utils.redirect('/payment/process')
+
+    @http.route(['/payment/gestpay/s2s/create_json'], type='json', auth='public', csrf=False)
+    def gestpay_s2s_create_json(self, **post):
+        _logger.info("Gestpay S2S Create")
+        error = ''
+        acq = request.env['payment.acquirer'].browse(int(post.get('acquirer_id')))
+        try:
+            token = acq.s2s_process(post)
+        except Exception as e:
+            token = False
+            error = str(e).splitlines()[0].split('|')[-1] or ''
+        
+        if not token:
+            res = {
+                'result': False,
+                'error': error,
+            }
+            return res
+
+        res = {
+            'result': True,
+            'id': token.id,
+            'short_name': token.short_name,
+            '3d_secure': False,
+            'verified': False,
+        }
+
+        return res

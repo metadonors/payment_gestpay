@@ -13,7 +13,6 @@
     'data': [
         'security/payment_acquirer.xml',
         'views/payment_acquirer.xml',
-        'views/payment_token.xml',
         'views/payment_gestpay_templates.xml',
         'data/payment_acquirer_data.xml',
     ],

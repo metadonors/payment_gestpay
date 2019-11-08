@@ -33,10 +33,6 @@ On Gestpay backend you should set the url where users will be redirected after p
 * Go to Configuration -> Environment -> Response Addresses
 * Se both positive and negative URL as <your_odoo_url>/payment/gestpay/regiter
 
-.. figure:: path/to/local/image.png
-   :alt: alternative description
-   :width: 600 px
-
 Usage
 =====
 
@@ -50,14 +46,14 @@ To use this module, you need to:
    :target: https://runbot.odoo-community.org/runbot/{repo_id}/{branch}
 
 .. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
-.. branch is "8.0" for example
+.. branch is "12.0" for example
 
 Known issues / Roadmap
 ======================
 
 * Improve error and exceptions handle in external payment page process
-* Implement S2S form payment
-* Support card tokenization (remember me feature)
+* Let user choose to store or not cards in s2s form processing
+* Let user choose to pay with stored cards
 * Add some tests
 
 
@@ -88,8 +84,8 @@ Funders
 
 The development of this module has been financially supported by:
 
-* [Metadonors](https://www.metadonors.it)
-* [Agile Business Group](https://www.agilebg.com/page/homepage)
+.. _Metadonors: https://www.metadonors.it
+.. _Agile Business Group: https://www.agilebg.com/page/homepage
 
 Maintainer
 ----------
