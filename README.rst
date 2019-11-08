@@ -84,8 +84,8 @@ Funders
 
 The development of this module has been financially supported by:
 
-.. _Metadonors: https://www.metadonors.it
-.. _Agile Business Group: https://www.agilebg.com/page/homepage
+`Metadonors <https://www.metadonors.it>`_
+`Agile Business Group <https://www.agilebg.com/page/homepage>`_
 
 Maintainer
 ----------
